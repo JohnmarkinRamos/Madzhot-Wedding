@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FBF7F2;
+  --color-ivory-deep: #F4ECE3;
+  --color-ink: #2B2420;
+  --color-wine: #6E2A35;
+  --color-gold: #B79257;
+  --color-rose: #C98A93;
+  --color-sage: #8A9A7E;
+  --color-muted: #564b43;
+  --font-serif: 'Fraunces', serif;
+  --font-sans: 'Work Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #FBF7F2;
+  color: #2B2420;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  color: #2B2420;
+}
+a { color: inherit; text-decoration: none; }
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6E2A35;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: #B79257;
+  flex-shrink: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.hero-slide.visible { opacity: 1; }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-answer.open { max-height: 300px; }
+
+.av-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: opacity 0.22s ease;
+}
+
+.rw-tile {
+  position: relative; overflow: hidden; border-radius: 8px;
+  background-size: cover; background-position: center;
+  aspect-ratio: 4/3; cursor: pointer;
+  transition: transform 0.25s;
+}
+.rw-tile:hover { transform: scale(1.01); }
+.rw-tile.wide { grid-column: span 2; aspect-ratio: 16/7; }
+
+@media (max-width: 480px) {
+  .rw-tile.wide { grid-column: span 1; aspect-ratio: 4/3; }
+}
