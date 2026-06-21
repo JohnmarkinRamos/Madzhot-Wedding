@@ -37,7 +37,7 @@ export default function About({ admin = false }) {
         {/* Story */}
         <section className="py-[7.5rem] bg-[#F4ECE3]">
           <div className="max-w-[1180px] mx-auto px-[6vw]">
-            <div className="grid gap-[4.5rem] items-start" style={{ gridTemplateColumns: 'clamp(180px,0.85fr,380px) 1fr' }}>
+            <div className="grid gap-[4.5rem] items-start" style={{ gridTemplateColumns: 'minmax(180px,380px) 1fr' }}>
               <div className="relative overflow-hidden rounded-[2px] flex items-end p-8" style={{ aspectRatio:'4/5', background:'linear-gradient(165deg,#6E2A35,#4a1b22)', backgroundImage:"url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80')", backgroundSize:'cover', backgroundPosition:'center' }}>
                 <div className="absolute inset-0" style={{ background:'linear-gradient(180deg,rgba(43,36,32,0.05) 35%,rgba(43,36,32,0.65) 100%)' }} />
                 <span className="relative z-10 text-[#FBF7F2]" style={{ fontFamily:"'Fraunces',serif", fontStyle:'italic', fontSize:'1.3rem', lineHeight:1.3 }}>

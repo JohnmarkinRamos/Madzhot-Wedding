@@ -111,7 +111,7 @@ export default function Home({ admin = false }) {
         {/* ABOUT */}
         <section className="bg-[#F4ECE3] py-[7.5rem]" id="about">
           <div className="max-w-[1180px] mx-auto px-[6vw]">
-            <div className="grid gap-[4.5rem] items-start" style={{ gridTemplateColumns: 'clamp(200px, 0.85fr, 400px) 1fr' }}>
+            <div className="grid gap-[4.5rem] items-start" style={{ gridTemplateColumns: 'minmax(200px, 400px) 1fr' }}>
               {/* Carousel */}
               <div className="relative overflow-hidden rounded-[2px]" style={{ aspectRatio: '4/5', background: 'linear-gradient(165deg,#6E2A35,#4a1b22)' }}>
                 <div
