@@ -35,53 +35,57 @@ export default function Services({ admin = false }) {
     <>
       <Navbar admin={admin} />
       <main style={{ paddingTop: '5rem' }}>
-        <section className="py-[5rem]" style={{ borderBottom: '1px solid rgba(43,36,32,0.14)' }}>
-          <div className="max-w-[1180px] mx-auto px-[6vw] flex items-end justify-between gap-8 flex-wrap">
+        {/* Hero */}
+        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', borderBottom: '1px solid rgba(43,36,32,0.14)' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
             <div>
               <Eyebrow>Services</Eyebrow>
-              <h1 className="mt-4" style={{ fontSize: 'clamp(2.6rem,5vw,4.4rem)', lineHeight: 1.04 }}>How we support your day</h1>
+              <h1 style={{ marginTop: '1rem', fontSize: 'clamp(2.6rem,5vw,4.4rem)', lineHeight: 1.04 }}>How we support your day</h1>
             </div>
-            <p className="max-w-[30rem] text-[#564b43]">Three ways to work with us, depending on how much of the journey you'd like guided.</p>
+            <p style={{ maxWidth: '30rem', color: '#564b43' }}>Three ways to work with us, depending on how much of the journey you'd like guided.</p>
           </div>
         </section>
 
-        <div className="max-w-[1180px] mx-auto px-[6vw]">
-          {services.map(({ num, title, desc, items, best, img }, i) => (
-            <div key={num} className="py-[5rem]" style={{ borderBottom: '1px solid rgba(43,36,32,0.14)' }}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-[4rem] items-start">
+        {/* Service list */}
+        <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
+          {services.map(({ num, title, desc, items, best, img }) => (
+            <div key={num} style={{ paddingTop: '5rem', paddingBottom: '5rem', borderBottom: '1px solid rgba(43,36,32,0.14)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '4rem', alignItems: 'start' }}>
                 <div>
-                  <span className="block mb-4 text-[2.4rem] leading-none text-[#B79257]" style={{ fontFamily:"'Fraunces',serif", fontStyle:'italic' }}>{num}</span>
-                  <h2 className="mb-4" style={{ fontSize:'clamp(1.8rem,3vw,2.4rem)' }}>{title}</h2>
-                  <p className="text-[#564b43] mb-6">{desc}</p>
-                  <ul className="mb-6 space-y-2">
+                  <span style={{ display: 'block', marginBottom: '1rem', fontFamily: "'Fraunces',serif", fontStyle: 'italic', color: '#B79257', fontSize: '2.4rem', lineHeight: 1 }}>{num}</span>
+                  <h2 style={{ marginBottom: '1rem', fontSize: 'clamp(1.8rem,3vw,2.4rem)' }}>{title}</h2>
+                  <p style={{ color: '#564b43', marginBottom: '1.5rem' }}>{desc}</p>
+                  <ul style={{ marginBottom: '1.5rem' }}>
                     {items.map(item => (
-                      <li key={item} className="flex items-start gap-3 text-[0.94rem] text-[#564b43]">
-                        <span className="mt-1 w-[5px] h-[5px] rounded-full flex-shrink-0" style={{ background:'#B79257', marginTop:'8px' }} />
+                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.94rem', color: '#564b43', marginBottom: '0.5rem' }}>
+                        <span style={{ width: '5px', height: '5px', borderRadius: '9999px', flexShrink: 0, background: '#B79257', marginTop: '8px' }} />
                         {item}
                       </li>
                     ))}
                   </ul>
-                  <p className="text-[0.88rem] text-[#7a6f66] mb-6"><strong className="text-[#2B2420]">Best for:</strong> {best}</p>
-                  <Link to="/contact" className="text-[0.78rem] tracking-[0.08em] uppercase text-[#6E2A35] border-b border-[#6E2A35] pb-0.5">Inquire about this →</Link>
+                  <p style={{ fontSize: '0.88rem', color: '#7a6f66', marginBottom: '1.5rem' }}><strong style={{ color: '#2B2420' }}>Best for:</strong> {best}</p>
+                  <Link to="/contact" style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#6E2A35', borderBottom: '1px solid #6E2A35', paddingBottom: '0.125rem' }}>Inquire about this →</Link>
                 </div>
-                <div className="rounded-[2px]" style={{ backgroundImage:`url(${img})`, backgroundSize:'cover', backgroundPosition:'center', aspectRatio:'4/3' }} />
+                <div style={{ borderRadius: '2px', backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '4/3' }} />
               </div>
             </div>
           ))}
         </div>
 
-        <section className="py-[7.5rem] bg-[#F4ECE3]">
-          <div className="max-w-[1180px] mx-auto px-[6vw]">
+        {/* Mix & match */}
+        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#F4ECE3' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
             <Eyebrow>Not Sure Which Fits?</Eyebrow>
-            <h2 className="mt-5 mb-4" style={{ fontSize:'clamp(2rem,3.4vw,2.8rem)', maxWidth:'30rem' }}>Most couples mix and match</h2>
-            <p className="max-w-[36rem] text-[#564b43]">A lot of our couples combine Day-of Coordination with Styling & Design, or add Styling on top of Full Planning closer to the date. On your discovery call, we'll walk through your timeline and budget and recommend the right combination — no pressure to book more than you need.</p>
+            <h2 style={{ marginTop: '1.25rem', marginBottom: '1rem', fontSize: 'clamp(2rem,3.4vw,2.8rem)', maxWidth: '30rem' }}>Most couples mix and match</h2>
+            <p style={{ maxWidth: '36rem', color: '#564b43' }}>A lot of our couples combine Day-of Coordination with Styling & Design, or add Styling on top of Full Planning closer to the date. On your discovery call, we'll walk through your timeline and budget and recommend the right combination — no pressure to book more than you need.</p>
           </div>
         </section>
 
-        <section className="py-[6rem] px-[6vw] text-center" style={{ background:'linear-gradient(135deg,#6E2A35,rgba(219,92,92,0))' }}>
-          <h2 className="text-[#FBF7F2] mb-4" style={{ fontSize:'clamp(2.1rem,4vw,3.2rem)', maxWidth:'32rem', margin:'0 auto 1.6rem' }}>Let's find the right fit for you.</h2>
-          <p className="mb-8" style={{ color:'rgba(251,247,242,0.75)', maxWidth:'30rem', margin:'0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
-          <Link to="/contact" className="inline-block bg-[#FBF7F2] text-[#6E2A35] px-8 py-4 text-[0.82rem] tracking-[0.1em] uppercase transition-colors hover:bg-[#B79257] hover:text-[#2B2420]">Book a Discovery Call</Link>
+        {/* CTA */}
+        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', background: 'linear-gradient(135deg,#6E2A35,rgba(219,92,92,0))' }}>
+          <h2 style={{ color: '#FBF7F2', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Let's find the right fit for you.</h2>
+          <p style={{ color: 'rgba(251,247,242,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
+          <Link to="/contact" className="inline-block transition-colors hover:bg-[#B79257] hover:text-[#2B2420]" style={{ background: '#FBF7F2', color: '#6E2A35', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
         </section>
       </main>
       <Footer admin={admin} />
