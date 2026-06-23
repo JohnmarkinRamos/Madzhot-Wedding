@@ -50,7 +50,7 @@ export default function FAQ({ admin = false }) {
                     <h4 style={{ fontSize: '1.05rem', fontWeight: 450 }}>{q}</h4>
                     <span
                       className="flex-shrink-0 transition-transform duration-[250ms]"
-                      style={{ fontSize: '1.3rem', color: '#6E2A35', fontFamily: "'Fraunces',serif", transform: open === i ? 'rotate(45deg)' : 'none' }}
+                      style={{ fontSize: '1.3rem', color: '#E8833A', fontFamily: "'Fraunces',serif", transform: open === i ? 'rotate(45deg)' : 'none' }}
                     >+</span>
                   </div>
                   <div className={`faq-answer ${open === i ? 'open' : ''}`}>
@@ -63,7 +63,7 @@ export default function FAQ({ admin = false }) {
         </section>
 
         {/* Still have questions */}
-        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', background: '#F4ECE3', borderTop: '1px solid rgba(43,36,32,0.14)' }}>
+        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', background: '#FCEEDD', borderTop: '1px solid rgba(43,36,32,0.14)' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
             <div>
               <h3 style={{ fontFamily: "'Fraunces',serif", fontSize: '1.5rem' }}>Still have questions?</h3>

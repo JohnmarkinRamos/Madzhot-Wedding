@@ -52,19 +52,19 @@ export default function Services({ admin = false }) {
             <div key={num} style={{ paddingTop: '5rem', paddingBottom: '5rem', borderBottom: '1px solid rgba(43,36,32,0.14)' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '4rem', alignItems: 'start' }}>
                 <div>
-                  <span style={{ display: 'block', marginBottom: '1rem', fontFamily: "'Fraunces',serif", fontStyle: 'italic', color: '#B79257', fontSize: '2.4rem', lineHeight: 1 }}>{num}</span>
+                  <span style={{ display: 'block', marginBottom: '1rem', fontFamily: "'Fraunces',serif", fontStyle: 'italic', color: '#F0A868', fontSize: '2.4rem', lineHeight: 1 }}>{num}</span>
                   <h2 style={{ marginBottom: '1rem', fontSize: 'clamp(1.8rem,3vw,2.4rem)' }}>{title}</h2>
                   <p style={{ color: '#564b43', marginBottom: '1.5rem' }}>{desc}</p>
                   <ul style={{ marginBottom: '1.5rem' }}>
                     {items.map(item => (
                       <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.94rem', color: '#564b43', marginBottom: '0.5rem' }}>
-                        <span style={{ width: '5px', height: '5px', borderRadius: '9999px', flexShrink: 0, background: '#B79257', marginTop: '8px' }} />
+                        <span style={{ width: '5px', height: '5px', borderRadius: '9999px', flexShrink: 0, background: '#F0A868', marginTop: '8px' }} />
                         {item}
                       </li>
                     ))}
                   </ul>
-                  <p style={{ fontSize: '0.88rem', color: '#7a6f66', marginBottom: '1.5rem' }}><strong style={{ color: '#2B2420' }}>Best for:</strong> {best}</p>
-                  <Link to="/contact" style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#6E2A35', borderBottom: '1px solid #6E2A35', paddingBottom: '0.125rem' }}>Inquire about this →</Link>
+                  <p style={{ fontSize: '0.88rem', color: '#7a6f66', marginBottom: '1.5rem' }}><strong style={{ color: '#3A2415' }}>Best for:</strong> {best}</p>
+                  <Link to="/contact" style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#E8833A', borderBottom: '1px solid #E8833A', paddingBottom: '0.125rem' }}>Inquire about this →</Link>
                 </div>
                 <div style={{ borderRadius: '2px', backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '4/3' }} />
               </div>
@@ -73,7 +73,7 @@ export default function Services({ admin = false }) {
         </div>
 
         {/* Mix & match */}
-        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#F4ECE3' }}>
+        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#FCEEDD' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
             <Eyebrow>Not Sure Which Fits?</Eyebrow>
             <h2 style={{ marginTop: '1.25rem', marginBottom: '1rem', fontSize: 'clamp(2rem,3.4vw,2.8rem)', maxWidth: '30rem' }}>Most couples mix and match</h2>
@@ -82,10 +82,10 @@ export default function Services({ admin = false }) {
         </section>
 
         {/* CTA */}
-        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', background: 'linear-gradient(135deg,#6E2A35,rgba(219,92,92,0))' }}>
-          <h2 style={{ color: '#FBF7F2', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Let's find the right fit for you.</h2>
-          <p style={{ color: 'rgba(251,247,242,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
-          <Link to="/contact" className="inline-block transition-colors hover:bg-[#B79257] hover:text-[#2B2420]" style={{ background: '#FBF7F2', color: '#6E2A35', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
+        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', background: 'linear-gradient(135deg,#E8833A,rgba(232,131,58,0))' }}>
+          <h2 style={{ color: '#FFF8F0', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Let's find the right fit for you.</h2>
+          <p style={{ color: 'rgba(255,248,240,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
+          <Link to="/contact" className="inline-block transition-colors hover:bg-[#F0A868] hover:text-[#3A2415]" style={{ background: '#FFF8F0', color: '#E8833A', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
         </section>
       </main>
       <Footer admin={admin} />

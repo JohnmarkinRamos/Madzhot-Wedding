@@ -30,16 +30,16 @@ export default function Process({ admin = false }) {
         </section>
 
         {/* Timeline dots */}
-        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', background: '#2B2420' }}>
+        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', background: '#3A2415' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
             <div className="grid grid-cols-2 md:grid-cols-4 relative" style={{ rowGap: '2.5rem' }}>
-              <div className="absolute left-0 right-0 hidden md:block" style={{ top: '14px', height: '1px', background: 'rgba(251,247,242,0.25)' }} />
+              <div className="absolute left-0 right-0 hidden md:block" style={{ top: '14px', height: '1px', background: 'rgba(255,248,240,0.25)' }} />
               {steps.map(({ num, label, title, desc }) => (
                 <div key={num} className="relative" style={{ paddingRight: '1.5rem' }}>
-                  <div style={{ width: '14px', height: '14px', borderRadius: '9999px', marginBottom: '1.5rem', background: '#FBF7F2', border: '3px solid #2B2420', boxShadow: '0 0 0 1px rgba(251,247,242,0.5)' }} />
-                  <small style={{ display: 'block', color: '#B79257', fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{label.split(' · ')[0]}</small>
-                  <h4 style={{ color: '#FBF7F2', marginBottom: '0.5rem', fontFamily: "'Fraunces',serif", fontWeight: 450, fontSize: '1.15rem' }}>{title}</h4>
-                  <p style={{ fontSize: '0.88rem', maxWidth: '15rem', color: 'rgba(251,247,242,0.65)' }}>{desc.split('.')[0]}.</p>
+                  <div style={{ width: '14px', height: '14px', borderRadius: '9999px', marginBottom: '1.5rem', background: '#FFF8F0', border: '3px solid #3A2415', boxShadow: '0 0 0 1px rgba(255,248,240,0.5)' }} />
+                  <small style={{ display: 'block', color: '#F0A868', fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{label.split(' · ')[0]}</small>
+                  <h4 style={{ color: '#FFF8F0', marginBottom: '0.5rem', fontFamily: "'Fraunces',serif", fontWeight: 450, fontSize: '1.15rem' }}>{title}</h4>
+                  <p style={{ fontSize: '0.88rem', maxWidth: '15rem', color: 'rgba(255,248,240,0.65)' }}>{desc.split('.')[0]}.</p>
                 </div>
               ))}
             </div>
@@ -48,13 +48,13 @@ export default function Process({ admin = false }) {
 
         {/* Detail sections */}
         {steps.map(({ num, label, title, desc, img }, i) => (
-          <div key={num} style={{ paddingTop: '5rem', paddingBottom: '5rem', background: i % 2 === 0 ? '#FBF7F2' : '#F4ECE3' }}>
+          <div key={num} style={{ paddingTop: '5rem', paddingBottom: '5rem', background: i % 2 === 0 ? '#FFF8F0' : '#FCEEDD' }}>
             <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr 1fr', gap: '2rem', alignItems: 'start' }}>
                 <div style={{ fontFamily: "'Fraunces',serif", fontStyle: 'italic', color: 'rgba(43,36,32,0.1)', fontWeight: 600, fontSize: '4rem', lineHeight: 1 }}>{num}</div>
                 <div style={{ borderRadius: '2px', backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '4/3' }} />
                 <div>
-                  <small style={{ display: 'block', color: '#B79257', fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{label}</small>
+                  <small style={{ display: 'block', color: '#F0A868', fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{label}</small>
                   <h3 style={{ marginBottom: '1rem', fontFamily: "'Fraunces',serif", fontSize: 'clamp(1.6rem,2.8vw,2.2rem)' }}>{title}</h3>
                   <p style={{ color: '#564b43' }}>{desc}</p>
                 </div>
@@ -64,10 +64,10 @@ export default function Process({ admin = false }) {
         ))}
 
         {/* CTA */}
-        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', background: 'linear-gradient(135deg,#6E2A35,rgba(219,92,92,0))' }}>
-          <h2 style={{ color: '#FBF7F2', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Ready to start the first step?</h2>
-          <p style={{ color: 'rgba(251,247,242,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
-          <Link to="/contact" className="inline-block transition-colors hover:bg-[#B79257] hover:text-[#2B2420]" style={{ background: '#FBF7F2', color: '#6E2A35', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
+        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', background: 'linear-gradient(135deg,#E8833A,rgba(232,131,58,0))' }}>
+          <h2 style={{ color: '#FFF8F0', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Ready to start the first step?</h2>
+          <p style={{ color: 'rgba(255,248,240,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
+          <Link to="/contact" className="inline-block transition-colors hover:bg-[#F0A868] hover:text-[#3A2415]" style={{ background: '#FFF8F0', color: '#E8833A', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
         </section>
       </main>
       <Footer admin={admin} />

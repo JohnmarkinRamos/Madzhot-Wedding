@@ -7,10 +7,13 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Process from './pages/Process'
 import RealWeddings from './pages/RealWeddings'
+import WeddingDetail from './pages/WeddingDetail'
 import FAQ from './pages/FAQ'
 import AdminLogin from './pages/AdminLogin'
 import AdminRealWeddings from './pages/AdminRealWeddings'
 import { AdminAbout, AdminServices, AdminProcess, AdminFAQ, AdminHome } from './pages/AdminPages'
+
+
 
 function Contact() {
   return (
@@ -33,6 +36,7 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/process" element={<Process />} />
           <Route path="/real-weddings" element={<RealWeddings />} />
+          <Route path="/real-weddings/:id" element={<WeddingDetail />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
 

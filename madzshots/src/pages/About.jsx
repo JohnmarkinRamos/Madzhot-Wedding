@@ -35,12 +35,12 @@ export default function About({ admin = false }) {
         </section>
 
         {/* Story */}
-        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#F4ECE3' }}>
+        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#FCEEDD' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
             <div style={{ display: 'grid', gap: '4.5rem', alignItems: 'start', gridTemplateColumns: 'minmax(180px,380px) 1fr' }}>
               <div className="relative overflow-hidden" style={{ borderRadius: '2px', display: 'flex', alignItems: 'flex-end', padding: '2rem', aspectRatio: '4/5', backgroundImage: "url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(43,36,32,0.05) 35%,rgba(43,36,32,0.65) 100%)' }} />
-                <span className="relative" style={{ zIndex: 10, color: '#FBF7F2', fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: '1.3rem', lineHeight: 1.3 }}>
+                <span className="relative" style={{ zIndex: 10, color: '#FFF8F0', fontFamily: "'Fraunces',serif", fontStyle: 'italic', fontSize: '1.3rem', lineHeight: 1.3 }}>
                   "Every wedding has a rhythm. Our job is to help you hear it."
                 </span>
               </div>
@@ -55,7 +55,7 @@ export default function About({ admin = false }) {
                     { title: 'Our Mission', text: "To plan and coordinate weddings with honesty, organization, and warmth — so every couple feels held, not handled." },
                   ].map(({ title, text }) => (
                     <div key={title}>
-                      <h4 style={{ fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem', color: '#6E2A35' }}>{title}</h4>
+                      <h4 style={{ fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem', color: '#E8833A' }}>{title}</h4>
                       <p style={{ fontSize: '0.92rem', color: '#564b43' }}>{text}</p>
                     </div>
                   ))}
@@ -92,7 +92,7 @@ export default function About({ admin = false }) {
         </section>
 
         {/* Team */}
-        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#F4ECE3' }}>
+        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem', background: '#FCEEDD' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
             <Eyebrow>Meet the Team</Eyebrow>
             <h2 style={{ marginTop: '1.25rem', marginBottom: '3.5rem', fontSize: 'clamp(2rem,3.4vw,2.8rem)', maxWidth: '30rem' }}>The people planning your day</h2>
@@ -109,10 +109,10 @@ export default function About({ admin = false }) {
         </section>
 
         {/* CTA */}
-        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', color: '#FBF7F2', background: 'linear-gradient(135deg,#6E2A35,rgba(219,92,92,0))' }}>
-          <h2 style={{ color: '#FBF7F2', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Let's start planning your "I do."</h2>
-          <p style={{ color: 'rgba(251,247,242,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
-          <Link to="/contact" className="inline-block transition-colors hover:bg-[#B79257] hover:text-[#2B2420]" style={{ background: '#FBF7F2', color: '#6E2A35', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
+        <section style={{ paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '6vw', paddingRight: '6vw', textAlign: 'center', color: '#FFF8F0', background: 'linear-gradient(135deg,#E8833A,rgba(232,131,58,0))' }}>
+          <h2 style={{ color: '#FFF8F0', fontSize: 'clamp(2.1rem,4vw,3.2rem)', maxWidth: '32rem', margin: '0 auto 1.6rem' }}>Let's start planning your "I do."</h2>
+          <p style={{ color: 'rgba(255,248,240,0.75)', maxWidth: '30rem', margin: '0 auto 2.2rem' }}>Book a free discovery call and tell us about your date, your venue, and your vision.</p>
+          <Link to="/contact" className="inline-block transition-colors hover:bg-[#F0A868] hover:text-[#3A2415]" style={{ background: '#FFF8F0', color: '#E8833A', padding: '1rem 2rem', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Book a Discovery Call</Link>
         </section>
       </main>
       <Footer admin={admin} />
