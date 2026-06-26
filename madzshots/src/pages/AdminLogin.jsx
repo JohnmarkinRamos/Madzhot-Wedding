@@ -17,7 +17,9 @@ export default function AdminLogin() {
     const { error } = await signIn(email, password)
     setLoading(false)
     if (error) {
-      setError('Invalid email or password')
+      // Surface the real Supabase reason (wrong password, email not
+      // confirmed, rate-limited, etc.) instead of a generic message.
+      setError(error.message || 'Invalid email or password')
     } else {
       navigate('/admin')
     }
