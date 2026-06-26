@@ -537,11 +537,13 @@ export function Navbar({ admin = false }) {
           {/* Nav links */}
           <nav style={{ display: 'flex', alignItems: 'center', gap: '0.15rem' }}>
             {navLinks.map(({ to, label }) => {
-              const active = location.pathname === to
+              // In admin mode, keep the user inside the /admin/* routes
+              const target = admin ? `/admin${to}` : to
+              const active = location.pathname === target
               return (
                 <Link
                   key={to}
-                  to={to}
+                  to={target}
                   style={{
                     position: 'relative',
                     padding: '0.4rem 1rem',
