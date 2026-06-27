@@ -18,29 +18,31 @@ In Supabase Dashboard → Authentication → Users → Add User
 
 The admin login page at `/admin/login` uses Supabase email/password auth.
 
-## 4. (Optional) Real Weddings Table
-To persist gallery tiles across sessions instead of localStorage, run this SQL in Supabase:
+## 4. Real Weddings Table
+Run this SQL in Supabase SQL Editor to create the gallery table:
 ```sql
-create table wedding_tiles (
-  id text primary key,
+create table real_weddings (
+  id uuid primary key default gen_random_uuid(),
   couple text not null,
   subtitle text,
   category text check (category in ('planning','coordination','styling')),
   size text check (size in ('normal','wide')),
-  image text not null,
-  type text default 'image',
+  image_url text not null,
   created_at timestamptz default now()
 );
 
 -- Enable RLS
-alter table wedding_tiles enable row level security;
+alter table real_weddings enable row level security;
 
 -- Anyone can read
-create policy "Public read" on wedding_tiles for select using (true);
+create policy "Public read" on real_weddings for select using (true);
 
 -- Only authenticated users can write
-create policy "Auth write" on wedding_tiles for all using (auth.role() = 'authenticated');
+create policy "Auth write" on real_weddings for all using (auth.role() = 'authenticated');
 ```
+
+> Note: the table is `real_weddings` and the image column is `image_url`.
+> The admin dashboard at `/admin/real-weddings` will seed default tiles on first load.
 
 ## 5. Install & Run
 ```bash

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Footer } from '../components/Footer'
+import { Reveal } from '../components/Reveal'
 
-function Eyebrow({ children }) {
-  return <span className="eyebrow">{children}</span>
-}
+const C = { ivory:'#FBF7F2', blush:'#F7E9E4', rose:'#C98A93', roseDeep:'#9C5560', wine:'#6E2A35', gold:'#B79257', ink:'#2B2420', muted:'#6b5a52', faint:'#9c8d83' }
+const display = "'Cormorant Garamond', serif"
 
 const faqs = [
   { q:'How far in advance should we book?', a:'We recommend securing your planner 9–12 months before your wedding to ensure availability and enough planning time.' },
@@ -21,64 +21,69 @@ export default function FAQ({ admin = false }) {
 
   return (
     <>
+      <style>{`
+        .faq-contact{ display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+      `}</style>
       <Navbar admin={admin} />
-      <main style={{ paddingTop: '5rem' }}>
+      <main style={{ paddingTop:'5rem' }}>
+
         {/* Hero */}
-        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', borderBottom: '1px solid rgba(43,36,32,0.14)' }}>
-          <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
-            <div>
-              <Eyebrow>Frequently Asked</Eyebrow>
-              <h1 style={{ marginTop: '1rem', fontSize: 'clamp(2.6rem,5vw,4.4rem)', lineHeight: 1.04 }}>Answers for couples planning with us.</h1>
-            </div>
-            <p style={{ maxWidth: '30rem', color: '#564b43' }}>Get clear guidance on timing, services, budgets, and the support you'll receive from day one to your wedding day.</p>
+        <section className="wash-blush paper" style={{ paddingTop:'5rem', paddingBottom:'4.5rem' }}>
+          <div className="container" style={{ position:'relative', zIndex:1, display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap:'2rem', flexWrap:'wrap' }}>
+            <Reveal>
+              <span className="eyebrow">Frequently Asked</span>
+              <h1 style={{ marginTop:'1.25rem', fontFamily:display, fontWeight:700, fontSize:'clamp(3rem,6.4vw,5.2rem)', lineHeight:1.0, maxWidth:'16ch' }}>Answers for couples <em className="grad-rose" style={{ fontStyle:'italic' }}>planning with us.</em></h1>
+            </Reveal>
+            <Reveal delay={0.1}><p style={{ maxWidth:'30rem', color:C.muted, fontSize:'1.05rem' }}>Clear guidance on timing, services, budgets, and the support you'll receive from day one to your wedding day.</p></Reveal>
           </div>
         </section>
 
         {/* FAQ list */}
-        <section style={{ paddingTop: '7.5rem', paddingBottom: '7.5rem' }}>
-          <div style={{ maxWidth: '860px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw' }}>
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 style={{ marginTop: '1.25rem', marginBottom: '2.5rem', fontSize: 'clamp(2rem,3.4vw,2.8rem)' }}>Quick answers for your planning questions.</h2>
-            <div style={{ borderTop: '1px solid rgba(43,36,32,0.14)' }}>
+        <section className="section" style={{ background:C.ivory }}>
+          <div className="container" style={{ maxWidth:'860px' }}>
+            <Reveal>
+              <span className="eyebrow">FAQ</span>
+              <h2 style={{ marginTop:'1.25rem', marginBottom:'2.5rem', fontSize:'clamp(2.1rem,3.6vw,3rem)' }}>Quick answers for your planning questions.</h2>
+            </Reveal>
+            <div style={{ borderTop:'1px solid rgba(43,36,32,0.12)' }}>
               {faqs.map(({ q, a }, i) => (
-                <div
-                  key={q}
-                  style={{ paddingTop: '1.75rem', paddingBottom: '1.75rem', borderBottom: '1px solid rgba(43,36,32,0.14)', cursor: 'pointer' }}
-                  onClick={() => setOpen(open === i ? null : i)}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-                    <h4 style={{ fontSize: '1.05rem', fontWeight: 450 }}>{q}</h4>
-                    <span
-                      className="flex-shrink-0 transition-transform duration-[250ms]"
-                      style={{ fontSize: '1.3rem', color: '#E8833A', fontFamily: "'Fraunces',serif", transform: open === i ? 'rotate(45deg)' : 'none' }}
-                    >+</span>
+                <Reveal key={q} y={12}>
+                  <div onClick={() => setOpen(open === i ? null : i)} style={{ padding:'1.6rem 0', borderBottom:'1px solid rgba(43,36,32,0.12)', cursor:'pointer' }}>
+                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:'1rem' }}>
+                      <h4 style={{ fontSize:'1.15rem', fontWeight:500 }}>{q}</h4>
+                      <span style={{ fontSize:'1.5rem', color:C.wine, fontFamily:"'Fraunces',serif", transition:'transform 0.25s var(--ease-soft)', transform: open === i ? 'rotate(45deg)' : 'none', flexShrink:0 }}>+</span>
+                    </div>
+                    <div className={`faq-answer ${open === i ? 'open' : ''}`}>
+                      <p style={{ paddingTop:'1rem', color:C.muted, fontSize:'1rem', maxWidth:'46rem' }}>{a}</p>
+                    </div>
                   </div>
-                  <div className={`faq-answer ${open === i ? 'open' : ''}`}>
-                    <p style={{ paddingTop: '1rem', color: '#564b43', fontSize: '0.94rem' }}>{a}</p>
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* Still have questions */}
-        <section style={{ paddingTop: '5rem', paddingBottom: '5rem', background: '#FCEEDD', borderTop: '1px solid rgba(43,36,32,0.14)' }}>
-          <div style={{ maxWidth: '1180px', margin: '0 auto', paddingLeft: '6vw', paddingRight: '6vw', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
-            <div>
-              <h3 style={{ fontFamily: "'Fraunces',serif", fontSize: '1.5rem' }}>Still have questions?</h3>
-              <p style={{ marginTop: '0.5rem', color: '#564b43' }}>We're happy to answer anything about planning your wedding.</p>
-            </div>
-            <div style={{ display: 'flex', gap: '2rem' }}>
-              <div>
-                <h4 style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#7a6f66', marginBottom: '0.25rem' }}>Email</h4>
-                <p style={{ fontSize: '0.9rem' }}>hello@madzshots.com</p>
+        <section className="wash-blush paper" style={{ paddingTop:'4.5rem', paddingBottom:'4.5rem' }}>
+          <div className="container" style={{ position:'relative', zIndex:1 }}>
+            <Reveal>
+              <div className="faq-contact">
+                <div>
+                  <h3 style={{ fontFamily:display, fontWeight:600, fontSize:'2rem' }}>Still have questions?</h3>
+                  <p style={{ marginTop:'0.5rem', color:C.muted }}>We're happy to answer anything about planning your wedding.</p>
+                </div>
+                <div style={{ display:'flex', gap:'2.5rem', flexWrap:'wrap' }}>
+                  <div>
+                    <h4 style={{ fontSize:'0.78rem', textTransform:'uppercase', letterSpacing:'0.08em', color:C.gold, marginBottom:'0.3rem', fontWeight:600 }}>Email</h4>
+                    <a href="mailto:hello@madzshots.com" style={{ fontSize:'0.98rem', color:C.ink }}>hello@madzshots.com</a>
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize:'0.78rem', textTransform:'uppercase', letterSpacing:'0.08em', color:C.gold, marginBottom:'0.3rem', fontWeight:600 }}>Phone</h4>
+                    <a href="tel:+639171234567" style={{ fontSize:'0.98rem', color:C.ink }}>+63 917 123 4567</a>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h4 style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#7a6f66', marginBottom: '0.25rem' }}>Phone</h4>
-                <p style={{ fontSize: '0.9rem' }}>+63 917 123 4567</p>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>

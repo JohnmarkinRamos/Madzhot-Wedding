@@ -183,10 +183,38 @@ Facebook, Instagram, and TikTok all link to `#`. Replace with actual profile URL
 
 ---
 
-### 5. Minor code issues
-- `src/main.jsx` imports `index.css` twice (lines 3 and 5)
-- `src/pages/ProtectedAdminRoute.jsx` exists but is never imported — dead file
-- `src/App.css` contains legacy styles that are largely superseded; should be audited
+### 5. Contact page is still a placeholder
+`/contact` route renders "coming soon". All CTA buttons that used to link to `/contact`
+now point to `/` temporarily with a `{/* TODO: contact page */}` comment marking each
+spot. Wire them up once the Contact page is built.
+
+---
+
+### 6. Social media links are dead
+**File:** `src/components/Footer.jsx`
+
+Facebook, Instagram, and TikTok all link to `#`. Replace with actual profile URLs.
+
+---
+
+### 7. EmailJS credentials not configured
+**File:** `src/components/Navbar.jsx`, lines 6–8
+
+```js
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'
+```
+
+The booking form UI works, but no email is actually sent until these are replaced
+with real EmailJS account credentials.
+
+---
+
+### 8. Placeholder content (intentional — student will replace)
+- Wedding gallery images are Unsplash URLs — admin upload feature coming
+- Team member photos and testimonials are stock
+- Real data should be entered through the admin dashboard
 
 ---
 
@@ -205,6 +233,85 @@ e34daf2  added read me file
 ```
 
 Development has been incremental layout and navigation work. Admin routing was added in a later commit. No test suite exists.
+
+---
+
+## UI/UX Overhaul (2026-06-27)
+
+A full visual overhaul is underway, built in phases. Direction: **Warm Romantic** base
+with **deep-plum cinematic** moments. Animated with **Framer Motion** (moderate intensity).
+
+### Design decisions
+- **Fonts:** Fraunces (headings) + Work Sans (body) + **Cormorant Garamond** (display — couple names, hero lines)
+- **Form language:** soft & rounded — 16px radii, pill buttons, rose-tinted soft shadows
+- **Imagery:** full-bleed cinematic heroes + arch-top / soft-rounded gallery frames
+- **Color:** leads with **wine · rose · gold** (bright orange demoted); three layered darks — aubergine `#3E2230`, deep wine `#4A1F2B`, espresso `#2A1A22`
+- **Texture:** subtle paper grain + soft gradients (the `.paper`, `.wash-blush`, `.wash-plum` classes)
+
+### New dependencies
+- `framer-motion` — scroll reveals, mobile menu, hero parallax/slideshow, modal & page transitions, magnetic buttons
+- `lenis` — smooth momentum scrolling
+
+### Creative enhancements (round 2)
+Reusable pieces added under `src/components/`:
+- [`Loader.jsx`](src/components/Loader.jsx) — branded intro loader (shows ~1.5s on first load)
+- [`ScrollProgress.jsx`](src/components/ScrollProgress.jsx) — thin gold/rose progress thread at the top of every page
+- [`CountUp.jsx`](src/components/CountUp.jsx) — stats count up from zero on scroll-in (handles `150+`, `8 yrs`, `98%`, skips non-numeric like `Tarlac`)
+- [`Magnetic.jsx`](src/components/Magnetic.jsx) — buttons that drift toward the cursor (wraps the primary CTAs)
+- [`Ribbon.jsx`](src/components/Ribbon.jsx) — editorial infinite-scroll marquee band
+- [`Petals.jsx`](src/components/Petals.jsx) — subtle falling rose petals (hero + final CTA only)
+
+Wired globally in [`App.jsx`](src/App.jsx): Lenis smooth scroll, scroll-to-top on navigation, and **page fade transitions** between routes (`AnimatePresence`).
+Home hero is now a **crossfading slideshow** with Ken-Burns zoom. Arch image frames were squared to soft rounded rectangles (the `.frame-arch` class now matches `.frame`). The hero also got top padding so the eyebrow no longer collides with the fixed navbar on short viewports.
+
+### Creative enhancements (round 3)
+- [`Tilt.jsx`](src/components/Tilt.jsx) — 3D cursor tilt on gallery & service cards (flat on touch)
+- [`BlurImage.jsx`](src/components/BlurImage.jsx) — images fade from blur → sharp on load (all galleries)
+- [`BackToTop.jsx`](src/components/BackToTop.jsx) — floating return-to-top pill (global)
+- [`WordReveal.jsx`](src/components/WordReveal.jsx) — section headings animate in word-by-word
+- [`TestimonialSlider.jsx`](src/components/TestimonialSlider.jsx) — Home testimonials are now an auto-rotating slider
+- Home gallery tiles **cross-fade to a second photo on hover**
+- About story image + Home About image enlarged; Home map widened (820→1080px) and taller (340→480px)
+
+### Hero typography drama
+- Home hero headline uses a **mask-rise reveal** ([`MaskWords.jsx`](src/components/MaskWords.jsx)) — each word rises from behind a mask on load — at weight 700, with an **animated gold shimmer** on "beautifully" (`.shimmer-gold`).
+- Every page hero headline (About, Services, Process, FAQ, Real Weddings, Wedding detail) is now weight 700 with a **shimmer-gradient accent** on its key phrase (`.grad-rose` / `.shimmer-gold`). Shimmer respects `prefers-reduced-motion`.
+
+**Code-splitting:** routes are now lazy-loaded ([`App.jsx`](src/App.jsx)). The old single ~700KB bundle is split into small per-route chunks (Home ~24KB, FAQ ~5KB, etc.) plus shared vendor chunks — initial load is much lighter and the branded loader covers it.
+
+### Design-system files
+- [`src/index.css`](src/index.css) — all tokens (color, type, radii, shadows, motion easings), base styles, paper texture, utility classes (`.btn`, `.card`, `.frame`, `.frame-arch`, `.media`, `.eyebrow`, `.container`, `.section`), and `prefers-reduced-motion` support
+- [`src/components/Reveal.jsx`](src/components/Reveal.jsx) — `Reveal` and `RevealGroup` scroll-animation wrappers
+- [`src/lib/motion.js`](src/lib/motion.js) — shared Framer Motion variants / easing
+
+### Phase progress
+- **Phase 1 — Foundation:** ✅ done (design tokens, fonts, motion primitives)
+- **Phase 2 — Shell:** ✅ done — [`Navbar.jsx`](src/components/Navbar.jsx) (now has an **animated mobile hamburger menu** — the previous navbar had none and overflowed on phones), [`Footer.jsx`](src/components/Footer.jsx), and the restyled booking modal
+- **Phase 3 — Hero pages:** ✅ done — Home, [`RealWeddings.jsx`](src/pages/RealWeddings.jsx) (animated gallery, rounded pill filters, responsive grid), and [`Weddingdetail.jsx`](src/pages/Weddingdetail.jsx) (full-bleed cinematic hero with couple name overlay, animated gallery, upgraded lightbox with **keyboard navigation** — Esc/←/→)
+- **Phase 4 — Supporting pages:** ✅ done — [`About.jsx`](src/pages/About.jsx), [`Services.jsx`](src/pages/Services.jsx) (alternating image/text rows), [`Process.jsx`](src/pages/Process.jsx) (cinematic plum timeline + de-cluttered detail rows), [`FAQ.jsx`](src/pages/FAQ.jsx). Admin: login already on-brand; admin gallery grid made responsive (`auto-fill`). The `/admin/*` pages inherit the redesigned public pages automatically.
+
+**All four phases complete.** Every page now shares the warm-romantic design system, Framer Motion reveals, soft-rounded forms, and stacks cleanly on mobile (single-column below ~820px, hamburger nav below 880px).
+
+### Notes / follow-ups
+- Placeholder Unsplash images are intentionally kept (admin upload feature is the student's planned work)
+- Bundle is now code-split per route (see round 3). Largest shared chunks are the Framer Motion/React core and the Supabase client
+
+---
+
+## Code Fixes Applied (2026-06-27)
+
+| # | File | What was fixed |
+|---|---|---|
+| A1 | `src/pages/ProtectedAdminRoute.jsx` | Deleted — dead file, never imported, used wrong auth field (`user` vs `session`) |
+| A2 | `src/main.jsx` | Removed duplicate `import './index.css'` |
+| A3 | `src/App.css` | Cleared Vite template CSS — nothing in the project used it |
+| A4 | `src/pages/AdminRealWeddings.jsx` | Removed unused `Link` import; wired `EMPTY_FORM` constant into the modal state (was defined but ignored) |
+| A5 | `src/pages/AdminPages.jsx` | Removed unused `Navbar` and `Footer` imports; cleaned up verbose comments |
+| A6 | `src/pages/About.jsx` | Fixed stat: "120+ Weddings" → "150+" to match Home.jsx |
+| A7 | `src/pages/About.jsx`, `Services.jsx`, `Process.jsx` | Replaced broken `to="/contact"` links with `to="/"` + `{/* TODO: contact page */}` comment |
+| A8 | `src/components/Footer.jsx` | Fixed dead `href="#contact"` on Book a Call card → `href="#"` + TODO comment |
+| A9 | `src/components/Navbar.jsx` | Added Sign Out button in admin mode — calls `signOut()` from AuthContext then navigates to `/admin/login` |
+| A10 | `SUPABASE_SETUP.md` | Corrected SQL: table `wedding_tiles` → `real_weddings`, column `image` → `image_url` |
 
 ---
 

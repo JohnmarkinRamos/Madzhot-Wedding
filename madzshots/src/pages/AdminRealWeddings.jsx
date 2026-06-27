@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
 import { Footer } from '../components/Footer'
 import { supabase } from '../lib/supabase'
@@ -71,13 +70,10 @@ function Toast({ message, type, onDone }) {
 
 // ─── Edit Modal ───────────────────────────────────────────────────────────────
 function TileModal({ tile, onClose, onSave, saving }) {
-  const [form, setForm] = useState({
-    couple:   tile?.couple   ?? '',
-    subtitle: tile?.subtitle ?? '',
-    category: tile?.category ?? 'planning',
-    size:     tile?.size     ?? 'normal',
-    imageUrl: tile?.image_url ?? '',
-  })
+  const [form, setForm] = useState(
+    tile ? { ...EMPTY_FORM, couple: tile.couple ?? '', subtitle: tile.subtitle ?? '', category: tile.category ?? 'planning', size: tile.size ?? 'normal', imageUrl: tile.image_url ?? '' }
+         : EMPTY_FORM
+  )
   const isNew = !tile?.id || tile.id?.startsWith('t')
 
   const field = (label, key, type = 'text', placeholder = '') => (
@@ -344,7 +340,7 @@ export default function AdminRealWeddings() {
                 <p style={{ fontSize:'0.87rem' }}>Click "+ Add Photo" to get started</p>
               </div>
             ) : (
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1rem' }}>
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(240px, 1fr))', gap:'1rem' }}>
                 {visible.map(tile => (
                   <div
                     key={tile.id}
